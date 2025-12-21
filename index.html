@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diablo 2 Resurrected - Leveling Guide</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='75' font-size='75' fill='%23dc2626'%3E⚔%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --transition-speed: 0.2s;
+      --border-radius: 6px;
+      --spacing-xs: 4px;
+      --spacing-sm: 8px;
+      --spacing-md: 12px;
+      --spacing-lg: 16px;
+      --spacing-xl: 20px;
+    }
+
+    :root[data-theme="dark"] {
+      --bg-primary: #202222;
+      --bg-secondary: #2c2d2d;
+      --bg-tertiary: #353636;
+      --text-primary: #ececec;
+      --text-secondary: #b4b4b4;
+      --text-muted: #7c7c7c;
+      --accent-primary: #20808d;
+      --accent-hover: #2a9aa9;
+      --border-color: #3e3f3f;
+      --success: #4ade80;
+      --info: #60a5fa;
+      --warning: #f59e0b;
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    :root[data-theme="light"] {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f5f5;
+      --bg-tertiary: #ebebeb;
+      --text-primary: #1a1a1a;
+      --text-secondary: #4a4a4a;
+      --text-muted: #8a8a8a;
+      --accent-primary: #20808d;
+      --accent-hover: #2a9aa9;
+      --border-color: #d4d4d4;
+      --success: #22c55e;
+      --info: #3b82f6;
+      --warning: #f59e0b;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.5;
+      transition: background var(--transition-speed), color var(--transition-speed);
+      min-height: 100vh;
+    }
+
+    * {
+      cursor: default !important;
+    }
+
+    a, button, select, input, .clickable {
+      cursor: pointer !important;
+    }
+
+    .header {
+      background: var(--bg-secondary);
+      padding: 10px var(--spacing-xl);
+      box-shadow: 0 1px 3px var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-sm);
+      gap: var(--spacing-md);
+    }
+
+    .header h1 {
+      color: var(--text-primary);
+      font-size: 1.3em;
+      font-weight: 600;
+      text-align: center;
+      flex: 1;
+    }
+
+    .header-controls {
+      display: flex;
+      gap: var(--spacing-sm);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      padding: 5px 10px;
+      border-radius: var(--border-radius);
+      font-size: 0.85em;
+      transition: all var(--transition-speed);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .btn:hover {
+      background: var(--bg-secondary);
+      border-color: var(--accent-primary);
+    }
+
+    .btn-tooltip {
+      display: none;
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75em;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px var(--shadow);
+      z-index: 1001;
+    }
+
+    .btn:hover .btn-tooltip {
+      display: block;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 3px;
+      background: var(--bg-tertiary);
+      padding: 3px;
+      border-radius: 8px;
+      justify-content: center;
+    }
+
+    .tab {
+      background: transparent;
+      color: var(--text-secondary);
+      border: none;
+      padding: 5px var(--spacing-md);
+      font-weight: 500;
+      border-radius: var(--border-radius);
+      transition: all var(--transition-speed);
+      font-size: 0.9em;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .tab:hover {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+    }
+
+    .tab.active {
+      background: var(--accent-primary);
+      color: white;
+    }
+
+    .tab-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .tab-icon {
+      font-size: 0.75em;
+      opacity: 0.7;
+      padding: 2px;
+      border-radius: 3px;
+      transition: all var(--transition-speed);
+    }
+
+    .tab-icon:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .progress-bar {
+      background: var(--bg-tertiary);
+      height: 18px;
+      border-radius: 9px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      margin-top: var(--spacing-sm);
+    }
+
+    .progress-fill {
+      background: var(--accent-primary);
+      height: 100%;
+      transition: width 0.3s ease-out;
+      display: flex;
+      align-items: center;
+      padding-left: var(--spacing-sm);
+      color: white;
+      font-weight: 600;
+      font-size: 0.75em;
+      white-space: nowrap;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 14px auto;
+      padding: 0 var(--spacing-xl);
+      transition: max-width var(--transition-speed);
+    }
+
+    .container.wide {
+      max-width: 1600px;
+    }
+
+    .act-section {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .act-section.compact {
+      margin-bottom: 6px;
+    }
+
+    .act-header {
+      background: var(--bg-tertiary);
+      padding: var(--spacing-sm) var(--spacing-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      transition: background var(--transition-speed);
+    }
+
+    .act-section.compact .act-header {
+      padding: 6px var(--spacing-md);
+    }
+
+    .act-header:hover {
+      background: var(--bg-secondary);
+    }
+
+    .act-title-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .act-title {
+      color: var(--text-primary);
+      font-size: 1em;
+      font-weight: 600;
+    }
+
+    .act-section.compact .act-title {
+      font-size: 0.95em;
+    }
+
+    .act-progress {
+      color: var(--text-muted);
+      font-size: 0.8em;
+      font-weight: 500;
+    }
+
+    .act-section.compact .act-progress {
+      font-size: 0.75em;
+    }
+
+    .act-controls {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .act-icon {
+      color: var(--text-muted);
+      font-size: 0.85em;
+      padding: var(--spacing-xs) 6px;
+      border-radius: 4px;
+      transition: all var(--transition-speed);
+      opacity: 0.6;
+    }
+
+    .act-icon:hover {
+      opacity: 1;
+      background: var(--bg-primary);
+      color: var(--accent-primary);
+    }
+
+    .act-chevron {
+      color: var(--text-muted);
+      transition: transform 0.3s ease-out;
+      font-size: 0.85em;
+    }
+
+    .act-section.collapsed .act-chevron {
+      transform: rotate(-90deg);
+    }
+
+    .act-content {
+      padding: 6px;
+      max-height: 3000px;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s;
+    }
+
+    .act-section.compact .act-content {
+      padding: 4px;
+    }
+
+    .act-section.collapsed .act-content {
+      max-height: 0;
+      padding: 0 6px;
+    }
+
+    .step {
+      background: var(--bg-tertiary);
+      padding: 6px 10px;
+      margin: 3px 0;
+      border-radius: 5px;
+      border-left: 2px solid var(--accent-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      transition: all var(--transition-speed);
+      user-select: none;
+    }
+
+    .act-section.compact .step {
+      padding: 5px 8px;
+      margin: 2px 0;
+    }
+
+    .step:hover:not(.completed) {
+      background: var(--bg-secondary);
+      transform: translateX(2px);
+    }
+
+    .step.completed {
+      background: var(--bg-primary);
+      border-left-color: var(--success);
+      opacity: 0.5;
+    }
+
+    .step-number {
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.8em;
+      min-width: 20px;
+    }
+
+    .act-section.compact .step-number {
+      font-size: 0.75em;
+      min-width: 18px;
+    }
+
+    .step.completed .step-number {
+      color: var(--success);
+    }
+
+    .checkbox {
+      width: 14px;
+      height: 14px;
+      min-width: 14px;
+      accent-color: var(--accent-primary);
+      pointer-events: none;
+    }
+
+    .act-section.compact .checkbox {
+      width: 12px;
+      height: 12px;
+      min-width: 12px;
+    }
+
+    .step-content {
+      flex: 1;
+      font-size: 0.9em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .act-section.compact .step-content {
+      font-size: 0.85em;
+    }
+
+    .step-text {
+      color: var(--text-primary);
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .step.completed .step-text {
+      text-decoration: line-through;
+      color: var(--text-secondary);
+    }
+
+    .step-location {
+      color: var(--text-muted);
+      font-size: 0.85em;
+      font-style: italic;
+    }
+
+    .act-section.compact .step-location {
+      font-size: 0.8em;
+    }
+
+    .step-badges {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .waypoint-badge {
+      background: var(--info);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.7em;
+      font-weight: 600;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .act-section.compact .waypoint-badge {
+      padding: 1px 5px;
+      font-size: 0.65em;
+    }
+
+    .icon-btn {
+      color: var(--text-muted);
+      font-size: 0.85em;
+      transition: all var(--transition-speed);
+      opacity: 0.6;
+      padding: 2px;
+      position: relative;
+    }
+
+    .act-section.compact .icon-btn {
+      font-size: 0.8em;
+    }
+
+    .icon-btn:hover {
+      opacity: 1;
+      color: var(--accent-primary);
+    }
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      padding: 6px var(--spacing-sm);
+      border-radius: 5px;
+      z-index: 1000;
+      min-width: 180px;
+      max-width: 300px;
+      box-shadow: 0 4px 12px var(--shadow);
+      font-size: 0.85em;
+      color: var(--text-secondary);
+      line-height: 1.3;
+      right: 0;
+      top: 24px;
+      white-space: normal;
+    }
+
+    .icon-btn:hover .tooltip,
+    .waypoint-badge:hover .tooltip {
+      display: block;
+    }
+
+    .extra-info {
+      margin-top: 3px;
+      padding: 5px var(--spacing-sm);
+      background: var(--bg-primary);
+      border-radius: 3px;
+      font-size: 0.8em;
+      color: var(--text-secondary);
+      margin-left: 30px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .act-section.compact .extra-info {
+      margin-top: 2px;
+      padding: 4px 6px;
+      font-size: 0.75em;
+      margin-left: 24px;
+    }
+
+    .extra-info-icon {
+      color: var(--accent-primary);
+      font-size: 0.9em;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .extra-info.tip {
+      border-left: 2px solid var(--accent-primary);
+    }
+
+    .extra-info.layout {
+      border-left: 2px solid var(--warning);
+    }
+
+    .extra-info.layout .extra-info-icon {
+      color: var(--warning);
+    }
+
+    .layout-link {
+      color: var(--accent-primary);
+      text-decoration: underline;
+    }
+
+    .layout-link:hover {
+      color: var(--accent-hover);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-xl);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      max-width: 1000px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: var(--spacing-xl);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .modal-title {
+      color: var(--text-primary);
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.3em;
+      padding: 0;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      transition: all var(--transition-speed);
+    }
+
+    .modal-close:hover {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+    }
+
+    .modal-section {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .modal-section h3 {
+      color: var(--accent-primary);
+      font-size: 1em;
+      margin-bottom: var(--spacing-sm);
+      font-weight: 600;
+    }
+
+    .modal-section p {
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 6px;
+      font-size: 0.9em;
+    }
+
+    .source-list {
+      list-style: none;
+    }
+
+    .source-item {
+      color: var(--text-secondary);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9em;
+    }
+
+    .source-item:last-child {
+      border-bottom: none;
+    }
+
+    .source-item a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      transition: color var(--transition-speed);
+    }
+
+    .source-item a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
+    .rune-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .rune-table th {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      padding: var(--spacing-sm);
+      text-align: left;
+      font-size: 0.85em;
+      font-weight: 600;
+      border-bottom: 2px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    .rune-table td {
+      padding: 6px var(--spacing-sm);
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.8em;
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+
+    .rune-table tr:hover {
+      background: var(--bg-tertiary);
+    }
+
+    .rune-name {
+      color: var(--accent-primary);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .countess-tags {
+      display: inline-flex;
+      gap: 3px;
+      margin-left: 4px;
+      flex-wrap: wrap;
+    }
+
+    .countess-tag {
+      display: inline-block;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-size: 0.7em;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .countess-normal {
+      background: #22c55e;
+      color: white;
+    }
+
+    .countess-nightmare {
+      background: #f59e0b;
+      color: white;
+    }
+
+    .countess-hell {
+      background: #ef4444;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .header-top {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: flex-start;
+      }
+
+      .header h1 {
+        text-align: left;
+      }
+
+      .header-controls {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .tabs {
+        width: 100%;
+      }
+
+      .tab {
+        flex: 1;
+        padding: 5px var(--spacing-sm);
+        font-size: 0.8em;
+      }
+
+      .step-text {
+        min-width: auto;
+      }
+
+      .container {
+        padding: 0 var(--spacing-md);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <h1>Diablo 2 Resurrected - Leveling Guide</h1>
+      <nav class="header-controls">
+        <button class="btn clickable" id="toggle-tips" aria-label="Toggle tips">
+          <i class="fas fa-lightbulb"></i> Tips
+          <span class="btn-tooltip">Show/hide all tips</span>
+        </button>
+        <button class="btn clickable" id="runes-btn" aria-label="Show runes">
+          <i class="fas fa-gem"></i> Runes
+          <span class="btn-tooltip">Rune reference table</span>
+        </button>
+        <button class="btn clickable" id="compact-toggle" aria-label="Toggle compact mode">
+          <i class="fas fa-compress-alt"></i>
+          <span class="btn-tooltip">Compact mode</span>
+        </button>
+        <button class="btn clickable" id="width-toggle" aria-label="Toggle width">
+          <i class="fas fa-arrows-alt-h"></i>
+          <span class="btn-tooltip">Wide mode</span>
+        </button>
+        <button class="btn clickable" id="theme-toggle" aria-label="Toggle theme">
+          <i class="fa-regular fa-sun"></i>
+          <span class="btn-tooltip">Light theme</span>
+        </button>
+        <button class="btn clickable" id="info-btn" aria-label="Show info">
+          <i class="fas fa-info-circle"></i>
+          <span class="btn-tooltip">About & sources</span>
+        </button>
+      </nav>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab clickable active" role="tab" data-difficulty="normal" aria-selected="true">
+        <span>Normal</span>
+        <div class="tab-actions">
+          <i class="fas fa-check-double tab-icon clickable" data-action="complete" data-difficulty="normal" title="Complete all Normal" aria-label="Complete all Normal"></i>
+          <i class="fas fa-redo-alt tab-icon clickable" data-action="reset" data-difficulty="normal" title="Reset Normal" aria-label="Reset Normal"></i>
+        </div>
+      </button>
+      <button class="tab clickable" role="tab" data-difficulty="nightmare" aria-selected="false">
+        <span>Nightmare</span>
+        <div class="tab-actions">
+          <i class="fas fa-check-double tab-icon clickable" data-action="complete" data-difficulty="nightmare" title="Complete all Nightmare" aria-label="Complete all Nightmare"></i>
+          <i class="fas fa-redo-alt tab-icon clickable" data-action="reset" data-difficulty="nightmare" title="Reset Nightmare" aria-label="Reset Nightmare"></i>
+        </div>
+      </button>
+      <button class="tab clickable" role="tab" data-difficulty="hell" aria-selected="false">
+        <span>Hell</span>
+        <div class="tab-actions">
+          <i class="fas fa-check-double tab-icon clickable" data-action="complete" data-difficulty="hell" title="Complete all Hell" aria-label="Complete all Hell"></i>
+          <i class="fas fa-redo-alt tab-icon clickable" data-action="reset" data-difficulty="hell" title="Reset Hell" aria-label="Reset Hell"></i>
+        </div>
+      </button>
+    </div>
+    <div class="progress-bar" role="progressbar" aria-label="Overall progress">
+      <div class="progress-fill" id="progress-fill">0/0 (0%)</div>
+    </div>
+  </header>
+
+  <main class="container" id="content"></main>
+
+  <dialog class="modal" id="info-modal" aria-labelledby="info-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="info-title">About & Sources</h2>
+        <button class="modal-close clickable" id="modal-close" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="modal-section">
+        <h3>About This Guide</h3>
+        <p>This leveling guide provides an optimized route through Diablo 2 Resurrected's campaign across all three difficulties. It focuses on essential quests, skill point rewards, and efficient progression through all acts.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>Features</h3>
+        <p>• Clickable steps with persistent progress tracking</p>
+        <p>• Area locations for all objectives</p>
+        <p>• Waypoint indicators and locations</p>
+        <p>• Tips and strategies for difficult encounters</p>
+        <p>• Layout guides for complex areas</p>
+        <p>• Light and dark theme support</p>
+        <p>• Compact mode for efficient viewing</p>
+        <p>• Rune reference table with Countess drops</p>
+        <p>• Responsive design for all devices</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>Data Sources</h3>
+        <ul class="source-list">
+          <li class="source-item">
+            <strong>Diablo Wiki (Fandom)</strong> - Quest and location information<br>
+            <a href="https://diablo.fandom.com/wiki/" target="_blank" rel="noopener">diablo.fandom.com/wiki</a>
+          </li>
+          <li class="source-item">
+            <strong>Diablo 2 Wiki</strong> - Quest details and waypoint locations<br>
+            <a href="https://diablo2.diablowiki.net/" target="_blank" rel="noopener">diablo2.diablowiki.net</a>
+          </li>
+          <li class="source-item">
+            <strong>Maxroll.gg</strong> - Countess farming and rune drops<br>
+            <a href="https://maxroll.gg/d2" target="_blank" rel="noopener">maxroll.gg/d2</a>
+          </li>
+          <li class="source-item">
+            <strong>Diablo 2 IO</strong> - Map layouts and area guides<br>
+            <a href="https://diablo2.io/" target="_blank" rel="noopener">diablo2.io</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="modal-section">
+        <h3>Inspired By</h3>
+        <p>This guide was inspired by <a href="https://heartofphos.github.io/exile-leveling/" target="_blank" rel="noopener">Exile Leveling</a> for Path of Exile by HeartofPhos.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>Version</h3>
+        <p>Version 2.1 - December 2025</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>Disclaimer</h3>
+        <p>This is an unofficial fan-made guide. Diablo 2 and Diablo 2 Resurrected are trademarks of Blizzard Entertainment. This guide is not affiliated with or endorsed by Blizzard Entertainment.</p>
+      </div>
+
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="runes-modal" aria-labelledby="runes-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="runes-title">Rune Reference</h2>
+        <button class="modal-close clickable" id="runes-close" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="modal-section">
+        <p>All 33 runes with their properties and Countess drop information.</p>
+        <div style="overflow-x: auto;">
+          <table class="rune-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Rune</th>
+                <th>Clvl</th>
+                <th>Weapon</th>
+                <th>Armor/Helm</th>
+                <th>Shield</th>
+              </tr>
+            </thead>
+            <tbody id="rune-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h3>Countess Drop Information</h3>
+        <p><span class="countess-tag countess-normal">N</span> Can drop from Countess in Normal difficulty (Tower Cellar Level 5, Black Marsh)</p>
+        <p><span class="countess-tag countess-nightmare">NM</span> Can drop from Countess in Nightmare difficulty</p>
+        <p><span class="countess-tag countess-hell">H</span> Can drop from Countess in Hell difficulty</p>
+        <p style="margin-top: 8px; font-size: 0.85em;">Note: Countess quest is optional but valuable for rune farming.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>Sources</h3>
+        <p>Rune data from <a href="https://diablo2.diablowiki.net/Rune_list" target="_blank" rel="noopener">Diablo 2 Wiki - Rune List</a></p>
+        <p>Countess drops from <a href="https://maxroll.gg/d2/meta/countess-farming-guide" target="_blank" rel="noopener">Maxroll.gg - Countess Farming Guide</a></p>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const RUNE_DATA = [
+      {num: 1, name: "El", clvl: 11, weapon: "+50 AR, +1 Light Radius", armor: "+1 Light Radius, +15 Defense", countess: ["N","NM","H"]},
+      {num: 2, name: "Eld", clvl: 11, weapon: "+75% Damage vs. Undead, +50 AR vs. Undead", armor: "Lowers Stamina drain by 15%", shield: "+7% Blocking", countess: ["N","NM","H"]},
+      {num: 3, name: "Tir", clvl: 13, weapon: "+2 Mana Per Kill", armor: "+2 Mana Per Kill", countess: ["N","NM","H"]},
+      {num: 4, name: "Nef", clvl: 13, weapon: "Knockback", armor: "+30 Defense vs. Missile", countess: ["N","NM","H"]},
+      {num: 5, name: "Eth", clvl: 15, weapon: "-25% Target Defense", armor: "Regenerate Mana 15%", countess: ["N","NM","H"]},
+      {num: 6, name: "Ith", clvl: 15, weapon: "+9 to Maximum Damage", armor: "15% Damage Taken Goes to Mana", countess: ["N","NM","H"]},
+      {num: 7, name: "Tal", clvl: 17, weapon: "75 Poison damage over 5 seconds", armor: "+30% Poison Resistance", shield: "+35% Poison Resistance", countess: ["N","NM","H"]},
+      {num: 8, name: "Ral", clvl: 19, weapon: "+5-30 Fire Damage", armor: "+30% Fire Resistance", shield: "+35% Fire Resistance", countess: ["N","NM","H"]},
+      {num: 9, name: "Ort", clvl: 21, weapon: "+1-50 Lightning Damage", armor: "+30% Lightning Resistance", shield: "+35% Lightning Resistance", countess: ["NM","H"]},
+      {num: 10, name: "Thul", clvl: 23, weapon: "+3-14 Cold Damage (3 sec)", armor: "+30% Cold Resistance", shield: "+35% Cold Resistance", countess: ["NM","H"]},
+      {num: 11, name: "Amn", clvl: 25, weapon: "7% Life Stolen Per Hit", armor: "Attacker takes 14 damage", countess: ["NM","H"]},
+      {num: 12, name: "Sol", clvl: 27, weapon: "+9 to Minimum Damage", armor: "-7 Damage Taken", countess: ["NM","H"]},
+      {num: 13, name: "Shael", clvl: 29, weapon: "+20% Faster Attack Rate", armor: "+20% Faster Hit Recovery", shield: "+20% Faster Block Rate", countess: ["NM","H"]},
+      {num: 14, name: "Dol", clvl: 31, weapon: "25% Chance Hit Causes Monster to Flee", armor: "+7 Replenish Life", countess: ["NM","H"]},
+      {num: 15, name: "Hel", clvl: 0, weapon: "-20% Requirements", armor: "-15% Requirements", countess: ["NM","H"]},
+      {num: 16, name: "Io", clvl: 35, weapon: "+10 Vitality", armor: "+10 Vitality", countess: ["NM","H"]},
+      {num: 17, name: "Lum", clvl: 37, weapon: "+10 Energy", armor: "+10 Energy", countess: ["H"]},
+      {num: 18, name: "Ko", clvl: 39, weapon: "+10 Dexterity", armor: "+10 Dexterity", countess: ["H"]},
+      {num: 19, name: "Fal", clvl: 41, weapon: "+10 Strength", armor: "+10 Strength", countess: ["H"]},
+      {num: 20, name: "Lem", clvl: 43, weapon: "+75% Extra Gold from Monsters", armor: "+50% Extra Gold from Monsters", countess: ["H"]},
+      {num: 21, name: "Pul", clvl: 45, weapon: "+75% Damage to Demons, +100 AR vs. Demons", armor: "+30% Defense", countess: ["H"]},
+      {num: 22, name: "Um", clvl: 47, weapon: "25% Chance of Open Wounds", armor: "+15% Resist All", shield: "+22% Resist All", countess: ["H"]},
+      {num: 23, name: "Mal", clvl: 49, weapon: "Prevent Monster Healing", armor: "Reduce Magic Damage by 7", countess: ["H"]},
+      {num: 24, name: "Ist", clvl: 51, weapon: "+30% Better Chance Finding Magic Items", armor: "+25% Better Chance Finding Magic Items", countess: ["H"]},
+      {num: 25, name: "Gul", clvl: 53, weapon: "+20% AR", armor: "+5 to Max Resist Poison", countess: []},
+      {num: 26, name: "Vex", clvl: 55, weapon: "7% Mana Leech", armor: "+5 to Max Fire Resist", countess: []},
+      {num: 27, name: "Ohm", clvl: 57, weapon: "+50% Damage", armor: "+5 to Max Resist Cold", countess: []},
+      {num: 28, name: "Lo", clvl: 59, weapon: "20% Chance of Deadly Strike", armor: "+5 to Max Resist Lightning", countess: []},
+      {num: 29, name: "Sur", clvl: 61, weapon: "20% Chance Hit Blinds Target", armor: "+5% total Mana", shield: "+50 Mana", countess: []},
+      {num: 30, name: "Ber", clvl: 63, weapon: "20% Chance of Crushing Blow", armor: "Damage Reduced by 8%", countess: []},
+      {num: 31, name: "Jah", clvl: 65, weapon: "Ignores Target Defense", armor: "+5% of total Hit Points", shield: "+50 Hit Points", countess: []},
+      {num: 32, name: "Cham", clvl: 67, weapon: "32% Chance Hit Freezing Target (3 sec)", armor: "Cannot be Frozen", countess: []},
+      {num: 33, name: "Zod", clvl: 69, weapon: "Indestructible", armor: "Indestructible", countess: []}
+    ];
+
+    const leveling_data = {
+      normal: {
+        1: {
+          title: "Act 1: The Sightless Eye",
+          steps: [
+            { text: "Den of Evil", location: "Blood Moor", tips: "Clear all monsters for +1 skill point. Optional but highly recommended for the skill point reward", waypoint: false },
+            { text: "Return to Akara", location: "Rogue Encampment", tips: "Collect skill point and 1 free stat reset", waypoint: false },
+            { text: "Blood Raven", location: "Burial Grounds", tips: "She spawns Risen constantly. Fire damage helps. Reward: hire Rogue mercenaries", waypoint: false },
+            { text: "Countess (Optional)", location: "Tower Cellar Level 5, Black Marsh", tips: "Farm runes. Follow Forgotten Tower in Black Marsh. Good for early rune farming", waypoint: false, waypointInfo: "Black Marsh Waypoint", layout: "Follow left wall in Tower levels", layoutUrl: "https://maxroll.gg/d2/meta/countess-farming-guide" },
+            { text: "Get Scroll of Inifuss", location: "Dark Wood", tips: "Tree of Inifuss. Akara translates it to show Cairn Stone order", waypoint: true, waypointInfo: "Dark Wood Waypoint", layout: "Dark Wood has 3 exits - tree spawns randomly near edges" },
+            { text: "Rescue Deckard Cain", location: "Tristram via Cairn Stones", tips: "Use translated scroll at Cairn Stones. Cain identifies items for free forever", waypoint: false },
+            { text: "Horadric Malus", location: "Barracks Level 1", tips: "Quest reward: Charsi can socket one item per difficulty", waypoint: true, waypointInfo: "Outer Cloister Waypoint", layout: "Barracks is linear - follow the path through jail" },
+            { text: "Navigate to Outer Cloister", location: "Via Tamoe Highland", tips: "Path: Tamoe Highland → Monastery Gate → Outer Cloister", waypoint: true, waypointInfo: "Outer Cloister Waypoint" },
+            { text: "Defeat Andariel", location: "Catacombs Level 4", tips: "High poison damage - bring antidote potions. Stand in melee range to avoid poison spray attack", waypoint: true, waypointInfo: "Catacombs Level 2 Waypoint", layout: "Linear path from Level 2 waypoint through Levels 3 and 4", layoutUrl: "https://diablo-archive.fandom.com/wiki/The_Sightless_Eye" },
+            { text: "Travel to Act 2", location: "Rogue Encampment", tips: "Talk to Warriv", waypoint: false }
+          ]
+        },
+        2: {
+          title: "Act 2: The Secret of the Vizjerei",
+          steps: [
+            { text: "Kill Radament", location: "Sewers Level 3", tips: "+1 skill point reward - never skip. Sewers entrance in Lut Gholein", waypoint: false },
+            { text: "Get Horadric Cube", location: "Halls of the Dead Level 3, Dry Hills", tips: "Essential for combining items. Used throughout the game", waypoint: true, waypointInfo: "Halls of the Dead Level 2 Waypoint", layout: "Follow right wall in Halls of the Dead" },
+            { text: "Get Staff of Kings", location: "Maggot Lair Level 3, Far Oasis", tips: "Very narrow passages - difficult for larger characters", waypoint: true, waypointInfo: "Far Oasis Waypoint", layout: "Extremely narrow corridors - consider using ranged attacks" },
+            { text: "Get Viper Amulet", location: "Claw Viper Temple Level 2, Lost City", tips: "Destroy the altar to obtain amulet. Read the symbol - it identifies the correct tomb", waypoint: true, waypointInfo: "Lost City Waypoint", layout: "Temple has 2 levels - altar is on level 2" },
+            { text: "Combine Staff + Amulet", location: "Anywhere", tips: "Use Horadric Cube to create Horadric Staff. Place both items and transmute", waypoint: false },
+            { text: "Find correct Tomb", location: "Canyon of the Magi", tips: "Match symbol from Claw Viper Temple. 7 tombs total - only one is correct", waypoint: true, waypointInfo: "Canyon of the Magi Waypoint" },
+            { text: "Use Staff on Orifice", location: "Tal Rasha's Chamber", tips: "Place Horadric Staff in the hole to open Duriel's chamber", waypoint: false },
+            { text: "Defeat Duriel", location: "Duriel's Lair", tips: "Extremely fast and deadly. Use Thawing Potions for cold resistance. Try to keep him slowed", waypoint: false },
+            { text: "Talk to Tyrael", location: "Duriel's Lair", tips: "Portal to Act 3 appears automatically after dialogue", waypoint: false }
+          ]
+        },
+        3: {
+          title: "Act 3: The Infernal Gate",
+          steps: [
+            { text: "Golden Bird quest chain", location: "Spider Forest (Jade Figurine)", tips: "Jade Figurine (random drop) → Meshif → Golden Bird → Alkor → Potion of Life (+20 permanent HP)", waypoint: false },
+            { text: "Retrieve Gidbinn", location: "Flayer Jungle", tips: "Dagger in Flayer Jungle. Return to Ormus for reward", waypoint: true, waypointInfo: "Flayer Jungle Waypoint", layout: "Large jungle zone with multiple exits" },
+            { text: "Navigate to Lower Kurast", location: "Via Great Marsh", tips: "Path: Spider Forest → Great Marsh → Flayer Jungle → Lower Kurast", waypoint: true, waypointInfo: "Lower Kurast Waypoint" },
+            { text: "Reach Travincal", location: "Via Kurast Causeway", tips: "Kurast Bazaar → Upper Kurast → Kurast Causeway → Travincal", waypoint: true, waypointInfo: "Travincal Waypoint" },
+            { text: "Defeat High Council", location: "Travincal", tips: "Three council members. Destroy Compelling Orb. They drop good loot", waypoint: false },
+            { text: "Navigate Durance Level 2", location: "Via Travincal", tips: "Very large level with waypoint", waypoint: true, waypointInfo: "Durance of Hate Level 2 Waypoint", layout: "Follow left wall to find exit to Level 3 faster", layoutUrl: "https://diablo2.io/areas/durance-of-hate-level-2-t3788.html" },
+            { text: "Defeat Mephisto", location: "Durance of Hate Level 3", tips: "Powerful spells. Use pillars as cover. High resistances essential. Popular farming boss", waypoint: false },
+            { text: "Take Red Portal", location: "Durance of Hate Level 3", tips: "Portal to Act 4 appears after Mephisto is defeated", waypoint: false }
+          ]
+        },
+        4: {
+          title: "Act 4: The Harrowing",
+          steps: [
+            { text: "Kill Izual", location: "Plains of Despair", tips: "+1 skill point reward - mandatory. High HP and uses Frost Nova", waypoint: false },
+            { text: "Navigate to River of Flame", location: "Via City of the Damned", tips: "Watch for Oblivion Knights casting Iron Maiden and other deadly curses", waypoint: true, waypointInfo: "City of the Damned Waypoint" },
+            { text: "Kill Hephasto", location: "River of Flame", tips: "Get his hammer to smash the Hellforge", waypoint: true, waypointInfo: "River of Flame Waypoint" },
+            { text: "Smash Hellforge", location: "River of Flame", tips: "Drops gems and runes (up to Amn in Normal)", waypoint: false },
+            { text: "Enter Chaos Sanctuary", location: "End of River of Flame", tips: "Most dangerous zone in Act 4", waypoint: false, layout: "3 seal groups each spawn a boss", layoutUrl: "https://diablo2.io/areas/chaos-sanctuary-t3825.html" },
+            { text: "Open all 5 seals", location: "Chaos Sanctuary", tips: "Spawns 3 bosses: Grand Vizier of Chaos, Lord De Seis, Infector of Souls", waypoint: false },
+            { text: "Defeat Diablo", location: "Chaos Sanctuary", tips: "Spawns after all seals opened. Lightning Hose and Fire Nova. Keep moving. 75%+ resistances essential", waypoint: false },
+            { text: "Travel to Act 5", location: "Pandemonium Fortress", tips: "Tyrael opens portal after Diablo is defeated", waypoint: false }
+          ]
+        },
+        5: {
+          title: "Act 5: Lord of Destruction",
+          steps: [
+            { text: "Kill Shenk", location: "Bloody Foothills", tips: "Quest reward: Larzuk will socket one item - save for important gear", waypoint: false },
+            { text: "Find Frozen River", location: "Frigid Highlands (side area)", tips: "Side area location varies. Look for entrance in Frigid Highlands", waypoint: true, waypointInfo: "Frigid Highlands Waypoint" },
+            { text: "Rescue Anya", location: "Frozen River", tips: "Get portal from Malah, use thaw potion on Anya", waypoint: false },
+            { text: "Complete Anya quest", location: "Harrogath", tips: "Rewards: +10 all resistances, rare class-specific item, ability to personalize items", waypoint: false },
+            { text: "Kill Nihlathak (Optional)", location: "Halls of Vaught via portal", tips: "Uses Corpse Explosion - very dangerous. Clear corpses carefully. Red portal from town", waypoint: false },
+            { text: "Navigate to Arreat Summit", location: "Via Frozen Tundra", tips: "Path: Crystalline Passage → Glacial Trail → Frozen Tundra → Ancient's Way → Arreat Summit", waypoint: true, waypointInfo: "Arreat Summit Waypoint" },
+            { text: "Defeat the Ancients", location: "Arreat Summit", tips: "Three barbarians: Talic, Korlic, Madawc. Cannot leave area or use town portal. Massive XP reward", waypoint: false },
+            { text: "Navigate to Throne", location: "Worldstone Keep", tips: "Path through Worldstone Keep Levels 1, 2, and 3", waypoint: true, waypointInfo: "Worldstone Keep Level 2 Waypoint" },
+            { text: "Survive Baal's 5 waves", location: "Throne of Destruction", tips: "Wave 2 (Bartuc) and Wave 4 (Lister the Tormentor) are hardest. Stay near portal for safety", waypoint: false },
+            { text: "Defeat Baal", location: "Worldstone Chamber", tips: "Clones himself, casts Decrepify and Hoarfrost. Final boss of Normal difficulty", waypoint: false },
+            { text: "Continue to Nightmare", location: "Harrogath", tips: "Talk to Malah or use waypoint. Recommended level: 40+", waypoint: false }
+          ]
+        }
+      },
+      nightmare: {
+        1: { title: "Act 1 (Nightmare)", steps: [
+          { text: "Den of Evil", location: "Blood Moor", tips: "Second skill point. Enemies much stronger. Level 35-40 recommended", waypoint: false },
+          { text: "Blood Raven", location: "Burial Grounds", tips: "Higher fire resistance recommended", waypoint: false },
+          { text: "Countess (Optional)", location: "Tower Cellar Level 5", tips: "Better rune drops in Nightmare", waypoint: false, waypointInfo: "Black Marsh Waypoint" },
+          { text: "Horadric Malus", location: "Barracks Level 1", tips: "Second socket from Charsi", waypoint: true, waypointInfo: "Outer Cloister Waypoint" },
+          { text: "Defeat Andariel", location: "Catacombs Level 4", tips: "Poison resistance crucial. Level 40-45 recommended", waypoint: true, waypointInfo: "Catacombs Level 2 Waypoint" }
+        ]},
+        2: { title: "Act 2 (Nightmare)", steps: [
+          { text: "Kill Radament", location: "Sewers Level 3", tips: "Second skill point. Level 40-45 recommended", waypoint: false },
+          { text: "Get Horadric Cube", location: "Halls of the Dead Level 3", tips: "Same location as Normal", waypoint: true, waypointInfo: "Halls of the Dead Level 2 Waypoint" },
+          { text: "Get Staff components", location: "Maggot Lair & Claw Viper Temple", tips: "Staff of Kings and Viper Amulet", waypoint: true, waypointInfo: "Far Oasis & Lost City Waypoints" },
+          { text: "Defeat Duriel", location: "Duriel's Lair", tips: "Much harder. Thawing Potions essential. Level 45-50", waypoint: false }
+        ]},
+        3: { title: "Act 3 (Nightmare)", steps: [
+          { text: "Golden Bird quest", location: "Random drop", tips: "Second Potion of Life (+20 HP)", waypoint: false },
+          { text: "Navigate to Travincal", location: "Via Kurast", tips: "Use waypoints efficiently", waypoint: true, waypointInfo: "Travincal Waypoint" },
+          { text: "Defeat High Council", location: "Travincal", tips: "Very dangerous. High resistances needed", waypoint: false },
+          { text: "Defeat Mephisto", location: "Durance of Hate Level 3", tips: "Level 50-55 recommended. Popular farm spot", waypoint: true, waypointInfo: "Durance of Hate Level 2 Waypoint" }
+        ]},
+        4: { title: "Act 4 (Nightmare)", steps: [
+          { text: "Kill Izual", location: "Plains of Despair", tips: "Second skill point. Level 55-60", waypoint: false },
+          { text: "Smash Hellforge", location: "River of Flame", tips: "Drops runes up to Um", waypoint: true, waypointInfo: "River of Flame Waypoint" },
+          { text: "Defeat Diablo", location: "Chaos Sanctuary", tips: "Lightning resistance crucial. Level 60-65", waypoint: false }
+        ]},
+        5: { title: "Act 5 (Nightmare)", steps: [
+          { text: "Kill Shenk", location: "Bloody Foothills", tips: "Second socket quest", waypoint: false },
+          { text: "Rescue Anya", location: "Frozen River", tips: "Another +10 all resistances", waypoint: true, waypointInfo: "Frigid Highlands Waypoint" },
+          { text: "Defeat Ancients", location: "Arreat Summit", tips: "Huge XP. Level 60-65", waypoint: true, waypointInfo: "Arreat Summit Waypoint" },
+          { text: "Defeat Baal", location: "Worldstone Chamber", tips: "Level 65-70. Prepare for Hell", waypoint: true, waypointInfo: "Worldstone Keep Level 2 Waypoint" }
+        ]}
+      },
+      hell: {
+        1: { title: "Act 1 (Hell)", steps: [
+          { text: "Den of Evil", location: "Blood Moor", tips: "Third skill point. Max resistances required. Level 70+", waypoint: false },
+          { text: "Blood Raven", location: "Burial Grounds", tips: "Much higher damage output", waypoint: false },
+          { text: "Countess (Optional)", location: "Tower Cellar Level 5", tips: "Best rune drops - up to Ist", waypoint: false, waypointInfo: "Black Marsh Waypoint" },
+          { text: "Horadric Malus", location: "Barracks Level 1", tips: "Final socket from Charsi", waypoint: true, waypointInfo: "Outer Cloister Waypoint" },
+          { text: "Defeat Andariel", location: "Catacombs Level 4", tips: "Maximum poison resistance. Level 70-75", waypoint: true, waypointInfo: "Catacombs Level 2 Waypoint" }
+        ]},
+        2: { title: "Act 2 (Hell)", steps: [
+          { text: "Kill Radament", location: "Sewers Level 3", tips: "Final skill point. Level 75+", waypoint: false },
+          { text: "Get Staff components", location: "Maggot Lair & Claw Viper Temple", tips: "Enemies deal massive damage", waypoint: true, waypointInfo: "Far Oasis & Lost City Waypoints" },
+          { text: "Defeat Duriel", location: "Duriel's Lair", tips: "Extreme damage. Level 75-80", waypoint: false }
+        ]},
+        3: { title: "Act 3 (Hell)", steps: [
+          { text: "Golden Bird quest", location: "Random drop", tips: "Final Potion of Life (+20 HP)", waypoint: false },
+          { text: "Defeat High Council", location: "Travincal", tips: "Conviction aura deadly. Level 75-80", waypoint: true, waypointInfo: "Travincal Waypoint" },
+          { text: "Defeat Mephisto", location: "Durance of Hate Level 3", tips: "Popular farm boss. Level 80-85", waypoint: true, waypointInfo: "Durance of Hate Level 2 Waypoint" }
+        ]},
+        4: { title: "Act 4 (Hell)", steps: [
+          { text: "Kill Izual", location: "Plains of Despair", tips: "Final skill point. Level 80+", waypoint: false },
+          { text: "Smash Hellforge", location: "River of Flame", tips: "Best rune drops (up to Gul)", waypoint: true, waypointInfo: "River of Flame Waypoint" },
+          { text: "Defeat Diablo", location: "Chaos Sanctuary", tips: "75%+ lightning resistance minimum. Level 80-85", waypoint: false }
+        ]},
+        5: { title: "Act 5 (Hell)", steps: [
+          { text: "Kill Shenk", location: "Bloody Foothills", tips: "Final socket quest - use wisely", waypoint: false },
+          { text: "Rescue Anya", location: "Frozen River", tips: "Final +10 all resistances boost", waypoint: true, waypointInfo: "Frigid Highlands Waypoint" },
+          { text: "Kill Nihlathak", location: "Halls of Vaught", tips: "Optional but drops valuable items", waypoint: false },
+          { text: "Defeat Ancients", location: "Arreat Summit", tips: "Last major XP boost. Level 80-85", waypoint: true, waypointInfo: "Arreat Summit Waypoint" },
+          { text: "Defeat Baal", location: "Worldstone Chamber", tips: "Level 85+. Final boss. Popular for XP and item farming", waypoint: true, waypointInfo: "Worldstone Keep Level 2 Waypoint" }
+        ]}
+      }
+    };
+
+    // State management
+    const state = {
+      showAllTips: false,
+      currentDifficulty: 'normal',
+      theme: localStorage.getItem('d2r-theme') || 'dark',
+      isWide: false,
+      isCompact: false
+    };
+
+    // Initialize
+    document.documentElement.setAttribute('data-theme', state.theme);
+    updateThemeIcon();
+
+    function updateThemeIcon() {
+      const icon = document.querySelector('#theme-toggle i');
+      const tooltip = document.querySelector('#theme-toggle .btn-tooltip');
+      if (state.theme === 'dark') {
+        icon.className = 'fa-regular fa-sun';
+        tooltip.textContent = 'Light theme';
+      } else {
+        icon.className = 'fa-regular fa-moon';
+        tooltip.textContent = 'Dark theme';
+      }
+    }
+
+    function updateCompactIcon() {
+      const icon = document.querySelector('#compact-toggle i');
+      const tooltip = document.querySelector('#compact-toggle .btn-tooltip');
+      if (state.isCompact) {
+        icon.className = 'fas fa-expand-alt';
+        tooltip.textContent = 'Normal mode';
+      } else {
+        icon.className = 'fas fa-compress-alt';
+        tooltip.textContent = 'Compact mode';
+      }
+    }
+
+    // Event Listeners
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      state.theme = state.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', state.theme);
+      localStorage.setItem('d2r-theme', state.theme);
+      updateThemeIcon();
+    });
+
+    document.getElementById('width-toggle').addEventListener('click', () => {
+      state.isWide = !state.isWide;
+      document.getElementById('content').classList.toggle('wide', state.isWide);
+    });
+
+    document.getElementById('compact-toggle').addEventListener('click', () => {
+      state.isCompact = !state.isCompact;
+      updateCompactIcon();
+      renderContent();
+    });
+
+    document.getElementById('info-btn').addEventListener('click', () => {
+      document.getElementById('info-modal').classList.add('active');
+    });
+
+    document.getElementById('modal-close').addEventListener('click', () => {
+      document.getElementById('info-modal').classList.remove('active');
+    });
+
+    document.getElementById('info-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'info-modal') {
+        document.getElementById('info-modal').classList.remove('active');
+      }
+    });
+
+    document.getElementById('runes-btn').addEventListener('click', () => {
+      populateRuneTable();
+      document.getElementById('runes-modal').classList.add('active');
+    });
+
+    document.getElementById('runes-close').addEventListener('click', () => {
+      document.getElementById('runes-modal').classList.remove('active');
+    });
+
+    document.getElementById('runes-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'runes-modal') {
+        document.getElementById('runes-modal').classList.remove('active');
+      }
+    });
+
+    function populateRuneTable() {
+      const tbody = document.getElementById('rune-table-body');
+      tbody.innerHTML = '';
+
+      RUNE_DATA.forEach(rune => {
+        const row = document.createElement('tr');
+
+        let countessTags = '';
+        if (rune.countess.includes('N')) countessTags += '<span class="countess-tag countess-normal">N</span>';
+        if (rune.countess.includes('NM')) countessTags += '<span class="countess-tag countess-nightmare">NM</span>';
+        if (rune.countess.includes('H') && !rune.countess.includes('NM')) countessTags += '<span class="countess-tag countess-hell">H</span>';
+
+        const nameCell = `<span class="rune-name">${rune.name}</span>${countessTags ? '<div class="countess-tags">' + countessTags + '</div>' : ''}`;
+
+        row.innerHTML = `
+          <td>${rune.num}</td>
+          <td>${nameCell}</td>
+          <td>${rune.clvl || 'None'}</td>
+          <td>${rune.weapon}</td>
+          <td>${rune.armor}</td>
+          <td>${rune.shield || rune.armor}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    document.querySelectorAll('.tab-icon').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const action = btn.dataset.action;
+        const diff = btn.dataset.difficulty;
+
+        if (action === 'reset') {
+          if (confirm(`Reset all progress for ${diff.charAt(0).toUpperCase() + diff.slice(1)}?`)) {
+            const progress = loadProgress();
+            Object.keys(progress).forEach(key => {
+              if (key.startsWith(diff + '-')) {
+                delete progress[key];
+              }
+            });
+            saveProgress(progress);
+            renderContent();
+          }
+        } else if (action === 'complete') {
+          if (confirm(`Mark all steps as complete for ${diff.charAt(0).toUpperCase() + diff.slice(1)}?`)) {
+            const progress = loadProgress();
+            Object.keys(leveling_data[diff]).forEach(actNum => {
+              const key = `${diff}-${actNum}`;
+              const stepCount = leveling_data[diff][actNum].steps.length;
+              progress[key] = Array(stepCount).fill(true);
+            });
+            saveProgress(progress);
+            renderContent();
+          }
+        }
+      });
+    });
+
+    function loadProgress() {
+      const saved = localStorage.getItem('d2r-progress');
+      return saved ? JSON.parse(saved) : {};
+    }
+
+    function saveProgress(progress) {
+      localStorage.setItem('d2r-progress', JSON.stringify(progress));
+    }
+
+    function calculateProgress() {
+      const progress = loadProgress();
+      let completed = 0;
+      let total = 0;
+
+      const acts = Object.keys(leveling_data[state.currentDifficulty]);
+
+      acts.forEach(actNum => {
+        const key = `${state.currentDifficulty}-${actNum}`;
+        const steps = progress[key] || [];
+        const actData = leveling_data[state.currentDifficulty][actNum];
+        completed += steps.filter(s => s).length;
+        total += actData.steps.length;
+      });
+
+      return { completed, total };
+    }
+
+    function calculateActProgress(actNum) {
+      const progress = loadProgress();
+      const key = `${state.currentDifficulty}-${actNum}`;
+      const steps = progress[key] || [];
+      const actData = leveling_data[state.currentDifficulty][actNum];
+      const completed = steps.filter(s => s).length;
+      const total = actData.steps.length;
+      return { completed, total };
+    }
+
+    function updateProgressBar() {
+      const { completed, total } = calculateProgress();
+      const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+      const fill = document.getElementById('progress-fill');
+      fill.style.width = percentage + '%';
+      fill.textContent = `${completed}/${total} (${percentage}%)`;
+    }
+
+    function renderContent() {
+      const container = document.getElementById('content');
+      container.innerHTML = '';
+
+      const acts = Object.keys(leveling_data[state.currentDifficulty]);
+
+      acts.forEach(actNum => {
+        const act = leveling_data[state.currentDifficulty][actNum];
+        const actSection = document.createElement('section');
+        actSection.className = 'act-section';
+        if (state.isCompact) {
+          actSection.classList.add('compact');
+        }
+
+        const actHeader = document.createElement('div');
+        actHeader.className = 'act-header clickable';
+
+        const titleSection = document.createElement('div');
+        titleSection.className = 'act-title-section';
+
+        const title = document.createElement('h2');
+        title.className = 'act-title';
+        title.textContent = act.title;
+
+        const { completed, total } = calculateActProgress(actNum);
+        const actProgress = document.createElement('span');
+        actProgress.className = 'act-progress';
+        actProgress.textContent = `${completed}/${total} (${Math.round(completed/total*100)}%)`;
+
+        titleSection.appendChild(title);
+        titleSection.appendChild(actProgress);
+
+        const actControls = document.createElement('div');
+        actControls.className = 'act-controls';
+
+        const completeBtn = document.createElement('i');
+        completeBtn.className = 'fas fa-check-double act-icon clickable';
+        completeBtn.title = 'Complete Act';
+        completeBtn.setAttribute('aria-label', 'Complete Act');
+        completeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (confirm(`Mark all steps in Act ${actNum} as complete?`)) {
+            const progress = loadProgress();
+            const key = `${state.currentDifficulty}-${actNum}`;
+            progress[key] = Array(act.steps.length).fill(true);
+            saveProgress(progress);
+            renderContent();
+          }
+        });
+
+        const resetBtn = document.createElement('i');
+        resetBtn.className = 'fas fa-redo-alt act-icon clickable';
+        resetBtn.title = 'Reset Act';
+        resetBtn.setAttribute('aria-label', 'Reset Act');
+        resetBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (confirm(`Reset Act ${actNum}?`)) {
+            const progress = loadProgress();
+            const key = `${state.currentDifficulty}-${actNum}`;
+            delete progress[key];
+            saveProgress(progress);
+            renderContent();
+          }
+        });
+
+        const chevron = document.createElement('i');
+        chevron.className = 'fas fa-chevron-down act-chevron';
+
+        actControls.appendChild(completeBtn);
+        actControls.appendChild(resetBtn);
+        actControls.appendChild(chevron);
+
+        actHeader.appendChild(titleSection);
+        actHeader.appendChild(actControls);
+        actSection.appendChild(actHeader);
+
+        const actContent = document.createElement('div');
+        actContent.className = 'act-content';
+
+        const progress = loadProgress();
+        const key = `${state.currentDifficulty}-${actNum}`;
+        const completedSteps = progress[key] || [];
+
+        act.steps.forEach((step, index) => {
+          const stepDiv = document.createElement('div');
+          stepDiv.className = 'step clickable';
+          const isCompleted = completedSteps[index];
+          if (isCompleted) {
+            stepDiv.classList.add('completed');
+          }
+
+          const stepNumber = document.createElement('span');
+          stepNumber.className = 'step-number';
+          stepNumber.textContent = `${index + 1}.`;
+
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.className = 'checkbox';
+          checkbox.checked = isCompleted || false;
+
+          const content = document.createElement('div');
+          content.className = 'step-content';
+
+          const textContainer = document.createElement('div');
+          textContainer.style.flex = '1';
+          textContainer.style.minWidth = '200px';
+
+          const textSpan = document.createElement('span');
+          textSpan.className = 'step-text';
+          textSpan.textContent = step.text;
+
+          const locationSpan = document.createElement('div');
+          locationSpan.className = 'step-location';
+          locationSpan.textContent = step.location;
+
+          textContainer.appendChild(textSpan);
+          textContainer.appendChild(locationSpan);
+          content.appendChild(textContainer);
+
+          const badges = document.createElement('div');
+          badges.className = 'step-badges';
+
+          if (step.waypoint) {
+            const wpBadge = document.createElement('span');
+            wpBadge.className = 'waypoint-badge';
+            wpBadge.textContent = 'WP';
+            const wpTooltip = document.createElement('div');
+            wpTooltip.className = 'tooltip';
+            wpTooltip.textContent = step.waypointInfo || 'Waypoint available';
+            wpBadge.appendChild(wpTooltip);
+            badges.appendChild(wpBadge);
+          }
+
+          if (step.layout && !isCompleted) {
+            const layoutIcon = document.createElement('i');
+            layoutIcon.className = 'fas fa-map icon-btn clickable';
+            const layoutTooltip = document.createElement('div');
+            layoutTooltip.className = 'tooltip';
+            layoutTooltip.textContent = 'Layout guide';
+            layoutIcon.appendChild(layoutTooltip);
+            badges.appendChild(layoutIcon);
+          }
+
+          if (step.tips && !isCompleted) {
+            const infoIcon = document.createElement('i');
+            infoIcon.className = 'fas fa-info-circle icon-btn clickable';
+
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = step.tips;
+            infoIcon.appendChild(tooltip);
+
+            badges.appendChild(infoIcon);
+          }
+
+          content.appendChild(badges);
+
+          stepDiv.appendChild(stepNumber);
+          stepDiv.appendChild(checkbox);
+          stepDiv.appendChild(content);
+
+          stepDiv.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('icon-btn') && e.target.className !== 'tooltip' && e.target.tagName !== 'I') {
+              completedSteps[index] = !completedSteps[index];
+              checkbox.checked = completedSteps[index];
+              progress[key] = completedSteps;
+              saveProgress(progress);
+
+              const allComplete = completedSteps.length === act.steps.length && completedSteps.every(s => s);
+              if (allComplete) {
+                actSection.classList.add('collapsed');
+              }
+
+              renderContent();
+            }
+          });
+
+          actContent.appendChild(stepDiv);
+
+          if (!isCompleted && state.showAllTips) {
+            if (step.tips) {
+              const tipsDiv = document.createElement('div');
+              tipsDiv.className = 'extra-info tip';
+              const icon = document.createElement('i');
+              icon.className = 'fas fa-info-circle extra-info-icon';
+              const text = document.createElement('span');
+              text.textContent = step.tips;
+              tipsDiv.appendChild(icon);
+              tipsDiv.appendChild(text);
+              actContent.appendChild(tipsDiv);
+            }
+
+            if (step.layout) {
+              const layoutDiv = document.createElement('div');
+              layoutDiv.className = 'extra-info layout';
+              const icon = document.createElement('i');
+              icon.className = 'fas fa-map extra-info-icon';
+              const text = document.createElement('span');
+
+              let layoutText = step.layout;
+              if (step.waypointInfo && step.waypoint) {
+                layoutText = `${step.waypointInfo}: ${step.layout}`;
+              }
+              text.textContent = layoutText;
+
+              if (step.layoutUrl) {
+                text.innerHTML += ' ';
+                const link = document.createElement('a');
+                link.href = step.layoutUrl;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.className = 'layout-link clickable';
+                link.textContent = '[View Map]';
+                text.appendChild(link);
+              }
+              layoutDiv.appendChild(icon);
+              layoutDiv.appendChild(text);
+              actContent.appendChild(layoutDiv);
+            }
+          }
+        });
+
+        actSection.appendChild(actContent);
+        container.appendChild(actSection);
+
+        actHeader.addEventListener('click', (e) => {
+          if (!e.target.classList.contains('act-icon')) {
+            actSection.classList.toggle('collapsed');
+          }
+        });
+
+        if (completed === total && total > 0) {
+          actSection.classList.add('collapsed');
+        }
+      });
+
+      updateProgressBar();
+    }
+
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('tab-icon')) {
+          document.querySelectorAll('.tab').forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          state.currentDifficulty = tab.dataset.difficulty;
+          renderContent();
+        }
+      });
+    });
+
+    document.getElementById('toggle-tips').addEventListener('click', () => {
+      state.showAllTips = !state.showAllTips;
+      renderContent();
+    });
+
+    // Keyboard accessibility
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.active').forEach(modal => {
+          modal.classList.remove('active');
+        });
+      }
+    });
+
+    // Initial render
+    renderContent();
+  </script>
+</body>
+</html>
