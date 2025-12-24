@@ -29,8 +29,7 @@ const leveling_data = {
         { text: "Staff of Kings", location: "Dry Hills ◆ → Far Oasis ◆ → Maggot Lair 1-3", tips: "Staff is on level 3", layout: "Narrow tunnels - hard for larger characters" },
         { text: "Amulet of the Viper", location: "Far Oasis ◆ → Lost City ◆ → Valley of Snakes → Claw Viper Temple 1-2", tips: "Amulet is on altar level 2. Destroy altar" },
         { text: "Combine Staff", location: "Horadric Cube", tips: "Staff of Kings + Amulet = Horadric Staff" },
-        { text: "Palace Cellar waypoint", location: "Lut Gholein → Harem 1-2 → Palace Cellar ◆", tips: "Waypoint for easy access to Arcane Sanctuary" },
-        { text: "Arcane Sanctuary", location: "Palace Cellar ◆ → Arcane Sanctuary ◆", tips: "Find Summoner at end of one platform. Kill for portal and symbol" },
+        { text: "Arcane Sanctuary", location: "Lut Gholein → Harem 1-2 → Palace Cellar 1-3 (◆ 1) → Arcane Sanctuary ◆", tips: "Find Summoner on one platform" },
         { text: "Canyon of the Magi", location: "Lost City ◆ → Canyon of the Magi ◆", tips: "Enter tomb matching Summoner's symbol" },
         { text: "Kill Duriel", location: "Canyon of the Magi ◆ → Tal Rasha's Tomb → Duriel's Chamber", tips: "Use Horadric Staff on Orifice. Holy Freeze aura - thaw potions help. +5 all resist reward" },
         { text: "Talk to Jerhyn", location: "Lut Gholein", tips: "Travel to Act 3" }
@@ -99,8 +98,7 @@ const leveling_data = {
         { text: "Staff of Kings", location: "Dry Hills ◆ → Far Oasis ◆ → Maggot Lair 1-3", tips: "Staff on level 3" },
         { text: "Amulet of the Viper", location: "Far Oasis ◆ → Lost City ◆ → Valley of Snakes → Claw Viper Temple 1-2", tips: "Amulet on altar level 2" },
         { text: "Combine Staff", location: "Horadric Cube", tips: "Staff of Kings + Amulet = Horadric Staff" },
-        { text: "Palace Cellar waypoint", location: "Lut Gholein → Harem 1-2 → Palace Cellar ◆", tips: "Access to Arcane" },
-        { text: "Arcane Sanctuary", location: "Palace Cellar ◆ → Arcane Sanctuary ◆", tips: "Find Summoner on one platform" },
+        { text: "Arcane Sanctuary", location: "Lut Gholein → Harem 1-2 → Palace Cellar 1-3 (◆ 1) → Arcane Sanctuary ◆", tips: "Find Summoner on one platform" },
         { text: "Kill Duriel", location: "Lost City ◆ → Canyon of the Magi ◆ → Tal Rasha's Tomb → Duriel's Chamber", tips: "Stronger Holy Freeze aura - thaw potions essential" }
       ]
     },
@@ -162,8 +160,7 @@ const leveling_data = {
         { text: "Staff of Kings", location: "Dry Hills ◆ → Far Oasis ◆ → Maggot Lair 1-3", tips: "Narrow tunnels - difficult for summoners" },
         { text: "Amulet of the Viper", location: "Far Oasis ◆ → Lost City ◆ → Valley of Snakes → Claw Viper Temple 1-2", tips: "High fire damage area" },
         { text: "Combine Staff", location: "Horadric Cube", tips: "Staff of Kings + Amulet" },
-        { text: "Palace Cellar waypoint", location: "Lut Gholein → Harem 1-2 → Palace Cellar ◆", tips: "Palace guards are dangerous" },
-        { text: "Arcane Sanctuary", location: "Palace Cellar ◆ → Arcane Sanctuary ◆", tips: "Ghosts are magic immune" },
+        { text: "Arcane Sanctuary", location: "Lut Gholein → Harem 1-2 → Palace Cellar 1-3 (◆ 1) → Arcane Sanctuary ◆", tips: "Find Summoner on one platform" },
         { text: "Kill Duriel", location: "Lost City ◆ → Canyon of the Magi ◆ → Tal Rasha's Tomb → Duriel's Chamber", tips: "Extreme Holy Freeze aura. Stack thaw potions. Can drop exceptional uniques" }
       ]
     },
