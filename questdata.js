@@ -25,7 +25,7 @@ const leveling_data = {
         { text: "Radament's Lair", location: "Lut Gholein → Sewers 1-3 (◆ 2)", tips: "First waypoint is in Sewers level 2. +1 skill point reward" },
         { text: "Return to Atma", location: "Lut Gholein", tips: "Collect skill point" },
         { text: "Get Horadric Scroll", location: "Sewers 2 ◆", tips: "Radament drops the scroll" },
-        { text: "Horadric Staff quest", location: "Sewers 2 ◆ → Dry Hills ◆ → Halls of the Dead 1-3", tips: "Horadric Cube is on level 3. Cube has unlimited uses" },
+        { text: "Horadric Staff quest", location: "Lut Gholein → Rocky Waste → Dry Hills ◆ → Halls of the Dead 1-3 (◆ 2)", tips: "Horadric Cube is on level 3. Cube has unlimited uses" },
         { text: "Staff of Kings", location: "Dry Hills ◆ → Far Oasis ◆ → Maggot Lair 1-3", tips: "Staff is on level 3", layout: "Narrow tunnels - hard for larger characters" },
         { text: "Amulet of the Viper", location: "Far Oasis ◆ → Lost City ◆ → Valley of Snakes → Claw Viper Temple 1-2", tips: "Amulet is on altar level 2. Destroy altar" },
         { text: "Combine Staff", location: "Horadric Cube", tips: "Staff of Kings + Amulet = Horadric Staff" },
@@ -96,7 +96,7 @@ const leveling_data = {
       title: "Act 2: The Secret of the Vizjerei",
       steps: [
         { text: "Radament's Lair", location: "Lut Gholein → Sewers 1-3 (◆ 2)", tips: "+1 skill point reward" },
-        { text: "Horadric Staff quest", location: "Sewers 2 ◆ → Dry Hills ◆ → Halls of the Dead 1-3", tips: "Cube on level 3" },
+        { text: "Horadric Staff quest", location: "Lut Gholein → Rocky Waste → Dry Hills ◆ → Halls of the Dead 1-3 (◆ 2)", tips: "Cube on level 3" },
         { text: "Staff of Kings", location: "Dry Hills ◆ → Far Oasis ◆ → Maggot Lair 1-3", tips: "Staff on level 3" },
         { text: "Amulet of the Viper", location: "Far Oasis ◆ → Lost City ◆ → Valley of Snakes → Claw Viper Temple 1-2", tips: "Amulet on altar level 2" },
         { text: "Combine Staff", location: "Horadric Cube", tips: "Staff of Kings + Amulet = Horadric Staff" },
@@ -160,7 +160,7 @@ const leveling_data = {
       title: "Act 2: The Secret of the Vizjerei",
       steps: [
         { text: "Radament's Lair", location: "Lut Gholein → Sewers 1-3 (◆ 2)", tips: "+1 skill point. Burning Dead Archers hit hard" },
-        { text: "Horadric Staff quest", location: "Sewers 2 ◆ → Dry Hills ◆ → Halls of the Dead 1-3", tips: "Cube on level 3" },
+        { text: "Horadric Staff quest", location: "Lut Gholein → Rocky Waste → Dry Hills ◆ → Halls of the Dead 1-3 (◆ 2)", tips: "Cube on level 3" },
         { text: "Staff of Kings", location: "Dry Hills ◆ → Far Oasis ◆ → Maggot Lair 1-3", tips: "Narrow tunnels - difficult for summoners" },
         { text: "Amulet of the Viper", location: "Far Oasis ◆ → Lost City ◆ → Valley of Snakes → Claw Viper Temple 1-2", tips: "High fire damage area" },
         { text: "Combine Staff", location: "Horadric Cube", tips: "Staff of Kings + Amulet" },
