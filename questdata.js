@@ -13,9 +13,9 @@ const leveling_data = {
         { text: "Rescue Deckard Cain", location: "Stony Field ◆ → Tristram via Cairn Stones", tips: "Use translated scroll at Cairn Stones. Free identify forever" },
         { text: "Horadric Malus", location: "Black Marsh ◆ → Tamoe Highland → Monastery Gate → Outer Cloister ◆ → Barracks", tips: "Socket quest reward from Charsi", layout: "Barracks is linear" },
         { text: "Tools of the Trade complete", location: "Rogue Encampment", tips: "Charsi can socket one item per difficulty" },
-        { text: "Get Jail waypoint", location: "Outer Cloister ◆ → Barracks → Jail 1-3 (◆ 3)", tips: "Waypoint is on level 3" },
+        { text: "Get Jail waypoint", location: "Outer Cloister ◆ → Barracks → Jail 1-3 (◆ 1)", tips: "Waypoint is on level 3" },
         { text: "Inner Cloister waypoint", location: "Jail 3 ◆ → Inner Cloister ◆", tips: "Fixed layout area" },
-        { text: "Kill Andariel", location: "Inner Cloister ◆ → Cathedral → Catacombs 1-4", tips: "Poison resist essential. Andariel is on Catacombs level 4. +2 all skills reward" },
+        { text: "Kill Andariel", location: "Inner Cloister ◆ → Cathedral → Catacombs 1-4 (◆ 2)", tips: "Poison resist essential. Andariel is on Catacombs level 4. +2 all skills reward" },
         { text: "Talk to Warriv", location: "Rogue Encampment", tips: "Travel to Act 2" }
       ]
     },
@@ -88,8 +88,8 @@ const leveling_data = {
         { text: "Get Scroll of Inifuss", location: "Cold Plains ◆ → Stony Field ◆ → Underground Passage → Dark Wood", tips: "Required for Cain" },
         { text: "Rescue Deckard Cain", location: "Stony Field ◆ → Tristram via Cairn Stones", tips: "Free identify service" },
         { text: "Horadric Malus", location: "Black Marsh ◆ → Tamoe Highland → Monastery Gate → Outer Cloister ◆ → Barracks", tips: "Socket quest - save for good item" },
-        { text: "Get Jail waypoint", location: "Outer Cloister ◆ → Barracks → Jail 1-3 (◆ 3)", tips: "Skip to Inner Cloister next" },
-        { text: "Kill Andariel", location: "Jail 3 ◆ → Inner Cloister ◆ → Cathedral → Catacombs 1-4", tips: "High poison damage - max poison resist recommended" }
+        { text: "Get Jail waypoint", location: "Outer Cloister ◆ → Barracks → Jail 1-3 (◆ 1)", tips: "Skip to Inner Cloister next" },
+        { text: "Kill Andariel", location: "Jail 1 ◆ → Inner Cloister ◆ → Cathedral → Catacombs 1-4 (◆ 2)", tips: "High poison damage - max poison resist recommended" }
       ]
     },
     2: {
@@ -152,8 +152,8 @@ const leveling_data = {
         { text: "Get Scroll of Inifuss", location: "Cold Plains ◆ → Stony Field ◆ → Underground Passage → Dark Wood", tips: "Required for Cain" },
         { text: "Rescue Deckard Cain", location: "Stony Field ◆ → Tristram via Cairn Stones", tips: "Free identify" },
         { text: "Horadric Malus", location: "Black Marsh ◆ → Tamoe Highland → Monastery Gate → Outer Cloister ◆ → Barracks", tips: "Final socket quest - use wisely" },
-        { text: "Get Jail waypoint", location: "Outer Cloister ◆ → Barracks → Jail 1-3 (◆ 3)", tips: "Direct access to Catacombs" },
-        { text: "Kill Andariel", location: "Jail 3 ◆ → Inner Cloister ◆ → Cathedral → Catacombs 1-4", tips: "Max poison resist mandatory. Can drop good items" }
+        { text: "Get Jail waypoint", location: "Outer Cloister ◆ → Barracks → Jail 1-3 (◆ 1)", tips: "Direct access to Catacombs" },
+        { text: "Kill Andariel", location: "Jail 1 ◆ → Inner Cloister ◆ → Cathedral → Catacombs 1-4 (◆ 2)", tips: "Max poison resist mandatory. Can drop good items" }
       ]
     },
     2: {
